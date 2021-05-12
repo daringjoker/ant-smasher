@@ -1,0 +1,2 @@
+window.GAME_WIDTH=800;
+window.GAME_HEIGHT=600;
