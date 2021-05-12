@@ -10,6 +10,12 @@ sheet.src="assets/antsprite.png";
 let splat=new Image();
 splat.src="assets/splatter.png";
 
+let hitSound=new Audio();
+hitSound.src="assets/hit.mp3";
+
+let killSound=new Audio();
+killSound.src="assets/killed.mp3";
+
 let spriteWidth=69;
 let spriteHeight=60;
 
@@ -59,12 +65,14 @@ function onClick(e){
     // mPos.x=x;
     // mPos.y=y;
     // mPos.display=true;
+    hitSound.play();
 
     let mousePos=new Vector(x,y);
     ants.forEach((ant,index)=>{
         if(distance(mousePos,ant.position)<ant.radius*1.5)
         {
             ants[index]=new Ant(index);
+            killSound.play();
             splatter.push({
                 x,y,
                 angle:random(0,2*Math.PI)
